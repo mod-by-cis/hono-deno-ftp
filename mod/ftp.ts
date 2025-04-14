@@ -1,26 +1,32 @@
 import type { Context, MiddlewareHandler } from "jsr:@hono/hono@4.7.6";
 import type { WalkEntry } from "jsr:@std/fs@1.0.16/walk";
 
-interface HonoDenoFtpOptions {
+
+interface HonoFtpOptions {
   dir: string;
   url: string;
   layout?: (urlPath: string, entries: string[]) => string;
   deps: [any, (opts: { root: string }) => MiddlewareHandler, (root: string, opts?: object) => AsyncIterable<WalkEntry>];
 }
 
-export function honoDenoFtp(options: HonoDenoFtpOptions): MiddlewareHandler {
+export function honoFtp(options: HonoFtpOptions): MiddlewareHandler {
   const { dir, url, layout, deps } = options;
   const [HonoApp, serveStatic, walk] = deps;
 
   const router = new HonoApp();
 
-  router.use(`${url}/*`, async (c: Context) => {
-    const urlPath = c.req.path.replace(new RegExp(`^${url}`), "") || "/";
+  router.use(`${url}/*`, async (c: Context, next) => {
+    const originalPath = c.req.path;
+    const urlPath = originalPath.replace(new RegExp(`^${url}`), "") || "/";
     const fsPath = `${dir}${urlPath}`;
 
     try {
       if (await isFile(fsPath)) {
-        return serveStatic({ root: "./" })(c, async () => {});
+        // Tymczasowa zmiana ścieżki
+        Object.defineProperty(c.req, "path", {
+          get: () => fsPath.replace(/^\.\//, "/")
+        });
+        return await serveStatic({ root: "." })(c, next);
       }
 
       if (await isDirectory(fsPath)) {
@@ -62,7 +68,7 @@ async function isDirectory(fsPath: string): Promise<boolean> {
   }
 }
 
-async function getDirectoryListing(fsPath: string, walk: HonoDenoFtpOptions["deps"][2]): Promise<string[]> {
+async function getDirectoryListing(fsPath: string, walk: HonoFtpOptions["deps"][2]): Promise<string[]> {
   const entries: string[] = [];
   for await (const entry of walk(fsPath, {
     maxDepth: 1,

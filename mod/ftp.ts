@@ -11,18 +11,19 @@ interface HonoFtpOptions {
 
 export function honoFtp(options: HonoFtpOptions): MiddlewareHandler {
   const { dir, url, layout, deps } = options;
-  const [HonoApp, serveStatic, walk] = deps;
+  const [, serveStatic, walk] = deps;
 
-  const router = new HonoApp();
+  return async (c, next) => {
+    if (!c.req.path.startsWith(url)) {
+      return next();
+    }
 
-  router.use(`${url}/*`, async (c: Context, next) => {
-    const originalPath = c.req.path;
-    const urlPath = originalPath.replace(new RegExp(`^${url}`), "") || "/";
+    const urlPath = c.req.path.replace(new RegExp(`^${url}`), "") || "/";
     const fsPath = `${dir}${urlPath}`;
 
     try {
       if (await isFile(fsPath)) {
-        // Tymczasowa zmiana ścieżki
+        // symulujemy ścieżkę jako względną dla serveStatic
         Object.defineProperty(c.req, "path", {
           get: () => fsPath.replace(/^\.\//, "/")
         });
@@ -36,15 +37,12 @@ export function honoFtp(options: HonoFtpOptions): MiddlewareHandler {
       }
 
       return c.text("Nieobsługiwany typ pliku.", 400);
-
     } catch (err) {
-      const message = handleError(err);
-      return c.text("Błąd odczytu pliku/folderu: " + message, 404);
+      return c.text("Błąd odczytu pliku/folderu: " + handleError(err), 404);
     }
-  });
-
-  return router.middleware;
+  };
 }
+
 
 function handleError(err: unknown): string {
   return err instanceof Error ? err.message : "Nieznany błąd";

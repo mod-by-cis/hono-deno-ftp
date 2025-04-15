@@ -7,11 +7,13 @@ export default function getDirectoryCatalog(Q:[string,string,string,string]):PAT
   const ROUTE = c_req_path;
   const TITLE = ROUTE.replace(new RegExp(`^${url}`), "") || "/";
   const LOCAL = `${dir}${TITLE}`;
+  const START = `${OUTER_url.protocol}//${OUTER_url.host}`;
   return {
+    START,
     UPPER,
     FULLY,
     ROUTE,
-    TITLE,
-    LOCAL
+    LOCAL,
+    TITLE
   };
 }

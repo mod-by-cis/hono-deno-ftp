@@ -30,7 +30,7 @@ export default function generateDefaultHtml(entries: PATH_NESTED[], path: PATH):
       <body>
         <h2>🦕 Index of</h2>
         <hr />
-        <h2>📁 ${path.TITLE !== "/" ? `<a href="${path.UPPER}/">⤴️</a>` : ""} <code>${path.ROUTE}</code></h2>
+        <h2>📁 <a href="${path.START}/">🔝</a> ${path.TITLE !== "/" ? `<a href="${path.UPPER}/">⤴️</a>` : ""} <code>${path.ROUTE}</code></h2>
         <ul>
           ${entries.slice(1).map(e => `<li>╰┈➤ ${e.icon} <a href="${e.href}"><code>${e.name}</code></a></li>`).join("")}
         </ul>

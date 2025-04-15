@@ -11,11 +11,12 @@ export interface PATH_NESTED {
   href:string;
 }
 export interface PATH {
+  START: string;
   UPPER: string;
   FULLY: string;
   ROUTE: string;
-  TITLE: string;
   LOCAL: string;
+  TITLE: string;
 }
 
 export interface HonoFtpOptions {

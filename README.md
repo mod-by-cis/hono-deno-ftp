@@ -1,8 +1,8 @@
 # hono-deno-ftp
 
-> a version experimentally..
+> a version
 >
-> - `🆕v0.1.0-rc.1` -> `📦https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.1.0-rc.1/mod.ts`
+> - `🆕v0.1.0` -> `📦https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.1.0/mod.ts`
 
 ## 📦HOW INSTALL
 
@@ -11,7 +11,7 @@
    ```json
    {
      "imports": {  
-       "@mod-by-cis/hono-deno-ftp": "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.1.0-rc.1/mod.ts"
+       "@mod-by-cis/hono-deno-ftp": "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.1.0/mod.ts"
      }
    }
    ```
@@ -20,7 +20,7 @@
    ```ts
    import { 
      honoDenoFtp
-   } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.1.0-rc.1/mod.ts";
+   } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.1.0/mod.ts";
    ```
 
 ## 🧠 HOW USED

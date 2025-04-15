@@ -1,6 +1,6 @@
 {
   "name": "@mod-by-cis/hono-deno-ftp",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-rc.1",
   "exports": "./mod.ts",  
   "license": "Mozilla Public License Version 2.0",  
   "tasks": {

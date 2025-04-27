@@ -1,10 +1,12 @@
-import { walk } from "jsr:@std/fs@1.0.16/walk";
-import type { PATH_NESTED, PATH } from "../ftp.ts";
-export default async function getDirectoryListing(path: PATH): Promise<PATH_NESTED[]> {
+import type { PATH_NESTED, PATH } from "../ftp.d.ts";
+async function getDirectoryListing(
+  path: PATH,
+  walkFn: (path: string, options: { maxDepth: number; includeDirs: boolean; includeFiles: boolean }) => AsyncIterable<any>
+): Promise<PATH_NESTED[]> {
   
   const entries: PATH_NESTED[] = [];
   let i = 0;
-  for await (const entry of walk(path.LOCAL, {
+  for await (const entry of walkFn(path.LOCAL, {
     maxDepth: 1,
     includeDirs: true,
     includeFiles: true,
@@ -21,3 +23,5 @@ export default async function getDirectoryListing(path: PATH): Promise<PATH_NEST
   }
   return entries;
 }
+
+export default getDirectoryListing;

@@ -1,5 +1,5 @@
-import type { PATH } from "../ftp.ts";
-export default function getDirectoryCatalog(Q:[string,string,string,string]):PATH {
+import type { PATH } from "../ftp.d.ts";
+function getDirectoryCatalog(Q:[string,string,string,string]):PATH {
   const [c_req_raw_url, c_req_path, url, dir] = Q;
   const FULLY = c_req_raw_url.replace(/\/$/, '');
   const OUTER_url = new URL(FULLY);
@@ -17,3 +17,5 @@ export default function getDirectoryCatalog(Q:[string,string,string,string]):PAT
     TITLE
   };
 }
+
+export default getDirectoryCatalog;

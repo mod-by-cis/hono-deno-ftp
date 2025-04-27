@@ -1,5 +1,5 @@
-import type { PATH_NESTED, PATH } from "../ftp.ts";
-export default function generateDefaultHtml(entries: PATH_NESTED[], path: PATH): string {
+import type { PATH_NESTED, PATH } from "../ftp.d.ts";
+function generateDefaultHtml(entries: PATH_NESTED[], path: PATH): string {
   return `
     <html>
       <head>
@@ -40,3 +40,6 @@ export default function generateDefaultHtml(entries: PATH_NESTED[], path: PATH):
     </html>
   `;
 }
+
+
+export default generateDefaultHtml;

@@ -1,4 +1,7 @@
 {
+  "[css]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features",
     "editor.formatOnSave": false
@@ -6,6 +9,9 @@
   "[javascript]": {
     "editor.defaultFormatter": "denoland.vscode-deno",
     "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
   },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features",
@@ -15,15 +21,33 @@
     "editor.defaultFormatter": "vscode.json-language-features",
     "editor.formatOnSave": false
   },
+  "[powershell]": {
+    "editor.defaultFormatter": "ms-vscode.powershell"
+  },
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno",
     "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
   },
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml",
     "editor.formatOnSave": false
   },
+  "apc.font.family": "FiraCode,  Fira Code",
+  "apc.monospace.font.family": "FiraCode,  Fira Code",
+  "blockman.n04ColorComboPreset": "Classic Light (Gradients)",
   "breadcrumbs.enabled": true,
+  "chat.editor.fontFamily": "FiraCode,  Fira Code",
+  "chat.experimental.variables.notebook": true,
+  "chat.experimental.variables.terminal": true,
+  "codemetrics.basics.CodeLensHiddenUnder": 4,
+  "codemetrics.nodeconfiguration.JsxElement": 0.2,
+  "codemetrics.nodeconfiguration.JsxSelfClosingElement": 0.1,
+  "codemetrics.nodeconfiguration.ReturnStatement": 0.1,
+  "codemetrics.nodeconfiguration.SwitchStatement": 0.1,
+  "conventionalCommits.lineBreak": "\\n",
   "cSpell.dictionaries": [
     "typescript",
     "deno",
@@ -33,8 +57,23 @@
     "css",
     "xml"
   ],
-  "cSpell.language": "en, pl",
-  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "cSpell.language": "en,pl-PL,pl",
+  "cSpell.words": [
+    "asynciterable",
+    "esbuil",
+    "esbuild",
+    "frontendowe",
+    "Hono",
+    "jsxs",
+    "pgsql",
+    "preact",
+    "Renderable"
+  ],
+  "css.validate": false,
+  "csv-edit.fontFamilyInTable": "sameAsCodeEditor",
+  "dataWrangler.experiments.autoDetectCsvDelimiter": true,
+  "dataWrangler.experiments.useJupyterProposedAPI": true,
+  "debug.console.fontFamily": "FiraCode,  Fira Code",
   "deno.cacheOnSave": true,
   "deno.codeLens.implementations": true,
   "deno.codeLens.references": true,
@@ -46,12 +85,34 @@
   ],
   "deno.lint": true,
   "deno.trace.server": "verbose",
-  "editor.fontFamily": "Fira Code",
+  "diffEditor.experimental.showMoves": true,
+  "diffEditor.wordWrap": "off",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.codeLensFontFamily": "FiraCode,  Fira Code",
+  "editor.defaultFoldingRangeProvider": "denoland.vscode-deno",
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.experimental.preferTreeSitter.typescript": true,
+  "editor.experimentalInlineEdit.fontFamily": "FiraCode,  Fira Code",
+  "editor.fontFamily": "FiraCode,  Fira Code, Consolas, 'Courier New', monospace",
   "editor.fontLigatures": true,
+  "editor.fontSize": 13,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": false,
+  "editor.guides.bracketPairs": true,
   "editor.guides.indentation": true,
   "editor.inlayHints.enabled": "off",
+  "editor.inlayHints.fontFamily": "FiraCode,  Fira Code",
+  "editor.inlineSuggest.fontFamily": "FiraCode,  Fira Code",
+  "editor.largeFileOptimizations": false,
   "editor.linkedEditing": true,
+  "editor.mouseWheelZoom": true,
   "editor.multiCursorModifier": "alt",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
   "editor.rulers": [
     46,
     92,
@@ -59,14 +120,53 @@
     184
   ],
   "editor.tabSize": 2,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": []
+  },
+  "editor.unicodeHighlight.nonBasicASCII": false,
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 185,
+  "errorLens.followCursor": "closestProblem",
+  "errorLens.fontStyleItalic": true,
+  "errorLens.gutterIconsEnabled": false,
+  "errorLens.messageBackgroundMode": "message",
+  "errorLens.scrollbarHackEnabled": true,
+  "errorLens.statusBarColorsEnabled": true,
+  "errorLens.statusBarMessageEnabled": true,
+  "errorLens.statusBarMessageType": "closestSeverity",
+  "es6-string-html.tags": [
+    "htmlFragment",
+    "html",
+    "svg",
+    "xml",
+    "htmlFragment"
+  ],
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "eslint.lintTask.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
   "files.associations": {
     ".env*": "dotenv",
     ".gramps": "xml",
+    "*.gpx": "xml",
     "*.tsx": "typescriptreact"
   },
+  "files.autoSave": "afterDelay",
   "files.exclude": {
+    "**/.trunk/*actions/": true,
+    "**/.trunk/*logs/": true,
+    "**/.trunk/*notifications/": true,
+    "**/.trunk/*out/": true,
+    "**/.trunk/*plugins/": true,
     "**/deno.lock": true,
     "**/dist": true,
     "**/node_modules": true
@@ -76,9 +176,51 @@
     "**/.git/**": true,
     "**/.history/**": true
   },
+  "files.watcherExclude": {
+    "**/.trunk/*actions/": true,
+    "**/.trunk/*logs/": true,
+    "**/.trunk/*notifications/": true,
+    "**/.trunk/*out/": true,
+    "**/.trunk/*plugins/": true
+  },
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "http.experimental.systemCertificatesV2": true,
+  "javascript.experimental.updateImportsOnPaste": true,
   "javascript.validate.enable": false,
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "jupyter.executionAnalysis.enabled": true,
+  "livePreview.notifyOnOpenLooseFile": false,
+  "markdown.extension.syntax.plainTheme": true,
+  "markdown.extension.theming.decoration.renderHardLineBreak": true,
+  "markdown.extension.theming.decoration.renderLink": true,
+  "markdown.extension.theming.decoration.renderParagraph": true,
+  "markdown.preview.fontFamily": "FiraCode,  Fira Code,-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
+  "markdownlint.customRules": [
+    "{docsmsft.docs-linting}/markdownlint-custom-rules/rules.js"
+  ],
+  "material-icon-theme.folders.associations": {
+    "deno": "src",
+    "dirs": "base"
+  },
+  "meld-diff.suppressErrorMessageWhenExitCodeNotZero": true,
+  "notebook.consolidatedRunButton": true,
+  "notebook.defaultFormatter": "denoland.vscode-deno",
+  "notebook.diff.overviewRuler": true,
+  "notebook.experimental.generate": true,
+  "notebook.experimental.remoteSave": true,
+  "notebook.experimental.variablesView": true,
+  "notebook.formatOnSave.enabled": true,
+  "notebook.lineNumbers": "on",
+  "notebook.output.fontFamily": "FiraCode,  Fira Code",
+  "notebook.stickyScroll.enabled": true,
   "notebook.variablesView": true,
   "powershell.buttons.showPanelMovementButtons": true,
+  "projectManager.openInNewWindowWhenClickingInStatusBar": true,
+  "reactSnippets.settings.prettierEnabled": true,
+  "redhat.telemetry.enabled": true,
+  "scm.inputFontFamily": "FiraCode,  Fira Code",
   "search.exclude": {
     "**/.git": true,
     "**/.history": true,
@@ -86,19 +228,50 @@
     "**/dist": true,
     "**/node_modules": true
   },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
+  "search.experimental.closedNotebookRichContentResults": true,
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "tw`([^`]*)",
+      1
+    ],
+    [
+      "tw=\"([^\"]*)",
+      1
+    ],
+    [
+      "tw={\"([^\"}]*)",
+      1
+    ]
   ],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
   },
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.fontFamily": "FiraCode,  Fira Code",
+  "terminal.integrated.fontLigatures": true,
   "terminal.integrated.fontSize": 12,
-  "typescript.tsdk": "%APPDATA%\\npm\\node_modules\\typescript\\lib",
-  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+  "terminal.integrated.profiles.windows": {
+    "UCRT64_MSYS2": {
+      "args": [
+        "-defterm",
+        "-here",
+        "-no-start",
+        "-ucrt64"
+      ],
+      "path": "C:/msys64/msys2_shell.cmd"
+    }
+  },
+  "terminal.integrated.tabs.location": "left",
+  "typescript.experimental.updateImportsOnPaste": true,
+  "typescript.tsdk": "%APPDATA%/npm/node_modules/typescript/lib",
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "typescript.validate.enable": false,
+  "vscode-edge-devtools.webhint": false,
+  "window.autoDetectColorScheme": true,
+  "window.density.editorTabHeight": "compact",
+  "window.zoomLevel": 0.4,
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#6b0b18",
     "activityBar.background": "#130e0f",
@@ -113,7 +286,6 @@
     "dropdown.background": "#2b191b",
     "dropdown.border": "#272324",
     "dropdown.listBackground": "#2B191B",
-
     "editorGroupHeader.tabsBackground": "#130e0f",
     "editorGutter.background": "#0e0d0d",
     "editorHoverWidget.background": "#3b2b2d",
@@ -163,44 +335,23 @@
     "terminal.selectionBackground": "#db223b46",
     "titleBar.activeBackground": "#130e0f"
   },
+  "workbench.colorTheme": "One Dark Pro",
   "workbench.commandPalette.experimental.askChatLocation": "chatView",
+  "workbench.commandPalette.experimental.suggestCommands": true,
   "workbench.editor.defaultBinaryEditor": "jupyter-notebook",
   "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.labelFormat": "short",
   "workbench.editor.pinnedTabSizing": "normal",
   "workbench.editor.pinnedTabsOnSeparateRow": true,
   "workbench.editor.preferHistoryBasedLanguageDetection": true,
+  "workbench.editor.tabActionLocation": "left",
+  "workbench.editorAssociations": {},
+  "workbench.experimental.share.enabled": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.panel.defaultLocation": "top",
-  "workbench.preferredLightColorTheme": "Dracula Theme",
+  "workbench.preferredDarkColorTheme": "Complementary Theme",
+  "workbench.preferredLightColorTheme": "One Dark Modern",
   "workbench.productIconTheme": "material-product-icons",
   "workbench.tree.enableStickyScroll": true,
-  "xml.symbols.maxItemsComputed": 999999,
-  "cSpell.words": [
-    "asynciterable",
-    "frontendowe",
-    "Hono",
-    "pgsql"
-  ],
-  "css.validate": false,
-  "editor.quickSuggestions": {
-    "strings": true
-  },
-  "tailwindCSS.includeLanguages": {
-    "plaintext": "html",
-    "typescript": "javascript",
-    "typescriptreact": "javascript"
-  },
-  "tailwindCSS.experimental.classRegex": [
-    ["tw`([^`]*)", 1],
-    ["tw=\"([^\"]*)", 1],
-    ["tw={\"([^\"}]*)", 1]
-  ],
-  "es6-string-html.tags": [
-    "htmlFragment",
-  "html",
-  "svg",
-  "xml",
-  "htmlFragment"
-]
-  
+  "xml.symbols.maxItemsComputed": 50000
 }

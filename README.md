@@ -1,61 +1,100 @@
-# hono-deno-ftp
+# 🔥🦕📂 @cis/hono-ftp (mod-by-cis/hono-deno-ftp)
 
-> a version
->
-> - `🆕v0.2.0` -> `📦https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.0/mod.ts`
+## 📦 HOW USED - INSTALL
 
-## 📦HOW INSTALL
+- Imports required for proper operation
 
-1. 🅰️ or add import in **`deno.json`**
+    ```typescript
+    import { Hono } from "jsr:@hono/hono@4.7.7";
+    import { serveStatic } from "jsr:@hono/hono@4.7.7/deno";
+    import type { MiddlewareHandler } from "jsr:@hono/hono@4.7.7";
+    import { walk } from "jsr:@std/fs@1.0.17/walk";
+    ```
 
-   ```json
-   {
-     "imports": {  
-       "hono-ftp": "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.0/mod.ts"
-     }
-   }
-   ```
+- And import this module
+  - Directly from **<u>jsr</u>** repository
+  
+      ```typescript
+      import { type HonoFtpOptions, honoDenoFtp } from "jsr:@cis/hono-ftp@0.2.1";
+      ```
+    
+  - Directly from **<u>github</u>** repository
+  
+      ```typescript
+      import { type HonoFtpOptions, honoDenoFtp } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.1/mod.ts";
+      ```
+    
+  - indirectly from **<u>deno.json</u>** 
 
-   and next
+      Add Package
 
-   ```typescript
-   import { type HonoFtpOptions, honoDenoFtp } from "hono-ftp";
-   ```
-2. 🅱️ or add import in **any `*.ts` files**
+      ```cmd
+      deno add jsr:@cis/hono-ftp
+      ```
 
-   ```typescript
-   import { 
-     honoDenoFtp
-   } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.0/mod.ts";
-   ```
+      Import symbol
+  
+      ```typescript
+      import { type HonoFtpOptions, honoDenoFtp } from "@cis/hono-ftp";
+      ```
+    
+  - indirectly from re-exports eg. **<u>deps.ts</u>** 
+  
+      ```typescript
+      import { type HonoFtpOptions, honoDenoFtp } from "../deps.ts";
+      ```
 
 ## 🧠 HOW USED
 
-```typescript
+- 🅰️ minimal configuration
+  
+    ```typescript
+    const appMain = new Hono();
 
-export { Hono } from "jsr:@hono/hono@4.7.7";
-export { logger } from "jsr:@hono/hono@4.7.7/logger";
-export { poweredBy } from "jsr:@hono/hono@4.7.7/powered-by";
-export { serveStatic } from "jsr:@hono/hono@4.7.7/deno";
-export { appendTrailingSlash, trimTrailingSlash } from "jsr:@hono/hono@4.7.7/trailing-slash";
-export type { MiddlewareHandler } from "jsr:@hono/hono@4.7.7";
-export { walk } from "jsr:@std/fs@1.0.17/walk";
-import { type HonoFtpOptions, honoDenoFtp } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.0/mod.ts";
+    appMain.use(
+      honoDenoFtp<
+        MiddlewareHandler, 
+        typeof serveStatic,
+        typeof walk
+      >({
+        dir: "./path/to/your/rootOfFiles/folder",
+        url: "/f",
+        deps: [serveStatic, walk],
+        // layout: (urlPath, entries) => customHtml
+      } as HonoFtpOptions<
+          MiddlewareHandler, 
+          typeof serveStatic, 
+          typeof walk
+        >)
+    );    
 
+    appMain.get('/', (c) => {
+      return c.text('Hello Hono!');
+    });
 
-const appMain = new Hono();
-const configFTP: HonoFtpOptions = {
-    dir: "./sample/public",
-    url: "/f",
-    deps: [serveStatic, walk],
-    // layout: (urlPath, entries) => customHtml
-    // layout: (urlPath, entries) => customHtml
-      /*layout: (urlPath, entries) => {
+    Deno.serve(/*{port:8007},*/ appMain.fetch);
+    ```
+
+- 🅱️ optionally you can overwrite the layout of our FTP
+ 
+    ```typescript
+    const appMain = new Hono();
+
+    appMain.use(
+      honoDenoFtp<
+        MiddlewareHandler, 
+        typeof serveStatic,
+        typeof walk
+      >({
+        dir: "./path/to/your/rootOfFiles/folder",
+        url: "/f",
+        deps: [serveStatic, walk],
+        layout: (urlPath, entries) => {
         console.log("#############", entries);
         const parentPath = urlPath.replace(/\/+$/, "").split("/").slice(0, -1).join("/") || "/";
         return `
           <!DOCTYPE html>
-          <html lang="pl">
+          <html lang="en">
           <head>
             <meta charset="UTF-8" />
             <title>Katalog ${urlPath}</title>
@@ -81,23 +120,29 @@ const configFTP: HonoFtpOptions = {
           </body>
           </html>
         `;
-      }*/
-  };
+      }
+      } as HonoFtpOptions<
+          MiddlewareHandler, 
+          typeof serveStatic, 
+          typeof walk
+        >)
+    );    
 
-appMain.use("*", logger(), poweredBy());
-appMain.use("*", trimTrailingSlash());
+    appMain.get('/', (c) => {
+      return c.text('Hello Hono!');
+    });
 
-// Przekazujesz swój Handler jako generyk i serveStatic jako fabrykę:
-appMain.use(honoDenoFtp< MiddlewareHandler, typeof serveStatic, typeof walk >(configFTP));
-
-appMain.get('/', (c) => {
-  // return c.redirect('/f', 301);
-  return c.redirect('/f');
-});
-
-Deno.serve(/*{port:8007},*/ appMain.fetch);
-
-
-```
+    Deno.serve(/*{port:8007},*/ appMain.fetch);
+    ```
 
 ---
+
+## 🪬 About This
+
+>  - `@cis` also called `mod-by-cis` is acronym of my surname Cisowski (Cisowscy)
+>  - `hono-ftp` also called `hono-deno-ftp` - it was created to minimize unnecessary code duplication in each project - it is still a conceptual version that works correctly, but I have not checked all possible cases in which it could theoretically not work well
+
+## 🔗 Links
+
+- 📦 JSR [jsr.io/@cis/hono-ftp](https://jsr.io/@cis/hono-ftp)
+- 📦 GITHUB[github.com/mod-by-cis/hono-deno-ftp](https://github.com/mod-by-cis/hono-deno-ftp)

@@ -42,11 +42,6 @@
   "chat.editor.fontFamily": "FiraCode,  Fira Code",
   "chat.experimental.variables.notebook": true,
   "chat.experimental.variables.terminal": true,
-  "codemetrics.basics.CodeLensHiddenUnder": 4,
-  "codemetrics.nodeconfiguration.JsxElement": 0.2,
-  "codemetrics.nodeconfiguration.JsxSelfClosingElement": 0.1,
-  "codemetrics.nodeconfiguration.ReturnStatement": 0.1,
-  "codemetrics.nodeconfiguration.SwitchStatement": 0.1,
   "conventionalCommits.lineBreak": "\\n",
   "cSpell.dictionaries": [
     "typescript",

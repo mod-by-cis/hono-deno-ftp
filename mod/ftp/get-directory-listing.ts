@@ -6,10 +6,10 @@
  * @module ./mod/ftp/get-directory-listing.ts
  * 
  * @source
- * [GitHub](https://github.com/mod-by-cis/hono-deno-ftp/blob/v0.2.5/mod/ftp/get-directory-listing.ts)
+ * [GitHub](https://github.com/mod-by-cis/hono-deno-ftp/blob/v0.2.6/mod/ftp/get-directory-listing.ts)
  * 
  * @jsr
- * [JSR](https://jsr.io/@cis/hono-ftp/0.2.5/mod/ftp/get-directory-listing.ts)
+ * [JSR](https://jsr.io/@cis/hono-ftp/0.2.6/mod/ftp/get-directory-listing.ts)
  */
 
 

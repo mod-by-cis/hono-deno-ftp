@@ -15,13 +15,13 @@
     - 2️⃣✳️1️⃣ Directly from **<u>jsr</u>** repository
     
         ```ts
-        import { type HonoFtpOptions, honoDenoFtp } from "jsr:@cis/hono-ftp@0.2.5";
+        import { type HonoFtpOptions, honoDenoFtp } from "jsr:@cis/hono-ftp@0.2.6";
         ```
     
     - 2️⃣✳️2️⃣ Directly from **<u>github</u>** repository
     
         ```ts
-        import { type HonoFtpOptions, honoDenoFtp } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.5/mod.ts";
+        import { type HonoFtpOptions, honoDenoFtp } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.6/mod.ts";
         ```
     
     - 2️⃣✳️3️⃣ indirectly from **<u>deno.json</u>** 

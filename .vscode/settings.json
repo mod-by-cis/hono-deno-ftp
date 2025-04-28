@@ -348,5 +348,6 @@
   "workbench.preferredLightColorTheme": "One Dark Modern",
   "workbench.productIconTheme": "material-product-icons",
   "workbench.tree.enableStickyScroll": true,
-  "xml.symbols.maxItemsComputed": 50000
+  "xml.symbols.maxItemsComputed": 50000,
+  "gitflow.disableOnRepo": true
 }

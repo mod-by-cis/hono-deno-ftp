@@ -145,4 +145,4 @@ Import symbol
 ## 🔗 Links
 
 - 📦 JSR [jsr.io/@cis/hono-ftp](https://jsr.io/@cis/hono-ftp)
-- 📦 GITHUB[github.com/mod-by-cis/hono-deno-ftp](https://github.com/mod-by-cis/hono-deno-ftp)
+- 📦 GITHUB [github.com/mod-by-cis/hono-deno-ftp](https://github.com/mod-by-cis/hono-deno-ftp)

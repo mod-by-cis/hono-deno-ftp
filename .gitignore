@@ -1,2 +1,6 @@
 deno.lock
 **/.vscode
+*/.vscode
+./.vscode
+/.vscode
+.vscode

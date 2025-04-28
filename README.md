@@ -4,51 +4,51 @@
 
 - Imports required for proper operation
 
-    ```typescript
+```ts
     import { Hono } from "jsr:@hono/hono@4.7.7";
     import { serveStatic } from "jsr:@hono/hono@4.7.7/deno";
     import type { MiddlewareHandler } from "jsr:@hono/hono@4.7.7";
     import { walk } from "jsr:@std/fs@1.0.17/walk";
-    ```
+```
 
 - And import this module
   - Directly from **<u>jsr</u>** repository
-  
-      ```typescript
-      import { type HonoFtpOptions, honoDenoFtp } from "jsr:@cis/hono-ftp@0.2.1";
-      ```
-    
-  - Directly from **<u>github</u>** repository
-  
-      ```typescript
-      import { type HonoFtpOptions, honoDenoFtp } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.1/mod.ts";
-      ```
-    
-  - indirectly from **<u>deno.json</u>** 
+
+```ts
+      import { type HonoFtpOptions, honoDenoFtp } from "jsr:@cis/hono-ftp@0.2.2";
+```
+
+- Directly from **<u>github</u>** repository
+
+```ts
+      import { type HonoFtpOptions, honoDenoFtp } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.2/mod.ts";
+```
+
+- indirectly from **<u>deno.json</u>** 
 
       Add Package
 
-      ```cmd
+```cmd
       deno add jsr:@cis/hono-ftp
-      ```
+```
 
-      Import symbol
-  
-      ```typescript
+Import symbol
+
+```ts
       import { type HonoFtpOptions, honoDenoFtp } from "@cis/hono-ftp";
-      ```
-    
-  - indirectly from re-exports eg. **<u>deps.ts</u>** 
-  
-      ```typescript
+```
+
+- indirectly from re-exports eg. **<u>deps.ts</u>**
+
+```ts
       import { type HonoFtpOptions, honoDenoFtp } from "../deps.ts";
-      ```
+```
 
 ## 🧠 HOW USED
 
 - 🅰️ minimal configuration
-  
-    ```typescript
+
+```ts
     const appMain = new Hono();
 
     appMain.use(
@@ -73,11 +73,11 @@
     });
 
     Deno.serve(/*{port:8007},*/ appMain.fetch);
-    ```
+```
 
 - 🅱️ optionally you can overwrite the layout of our FTP
- 
-    ```typescript
+
+```ts
     const appMain = new Hono();
 
     appMain.use(
@@ -133,7 +133,7 @@
     });
 
     Deno.serve(/*{port:8007},*/ appMain.fetch);
-    ```
+```
 
 ---
 

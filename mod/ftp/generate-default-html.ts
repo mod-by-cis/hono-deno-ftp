@@ -1,4 +1,33 @@
+/**
+ * @fileoverview
+ * 🇺🇸 Generates a simple default HTML page displaying a directory listing from given path entries.
+ * 🇵🇱 Generuje prostą domyślną stronę HTML wyświetlającą listę katalogu na podstawie podanych ścieżek.
+ * 
+ * @module ./mod/ftp/generate-default-html.ts
+ * 
+ * @source
+ * [GitHub](https://github.com/mod-by-cis/hono-deno-ftp/blob/v0.2.2/mod/ftp/generate-default-html.ts)
+ * 
+ * @jsr
+ * [JSR](https://jsr.io/@cis/hono-ftp/0.2.2/mod/ftp/generate-default-html.ts)
+ */
+
+
 import type { PATH_NESTED, PATH } from "../ftp.d.ts";
+
+/**
+ * 🇺🇸 Generates a default HTML page showing the content of a folder based on provided entries
+ * 🇵🇱 Generuje domyślną stronę HTML prezentującą zawartość katalogu na podstawie podanych wpisów.
+ * 
+ * @param entries 🇺🇸 List of entries (files/folders) to display.  
+ *                🇵🇱 Lista wpisów (plików/folderów) do wyświetlenia.
+ * 
+ * @param path 🇺🇸 Object containing route information for navigation links.  
+ *             🇵🇱 Obiekt zawierający informacje o trasie do tworzenia linków nawigacyjnych.
+ * 
+ * @returns 🇺🇸 A full HTML page as a string.  
+ *          🇵🇱 Pełna strona HTML zwrócona jako tekst.
+ */
 function generateDefaultHtml(entries: PATH_NESTED[], path: PATH): string {
   return `
     <html>
@@ -42,4 +71,8 @@ function generateDefaultHtml(entries: PATH_NESTED[], path: PATH): string {
 }
 
 
+/**
+ * 🇺🇸 Default export: the `generateDefaultHtml` function.
+ * 🇵🇱 Eksport domyślny: funkcja `generateDefaultHtml`.
+ */
 export default generateDefaultHtml;

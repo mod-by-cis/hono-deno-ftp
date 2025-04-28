@@ -4,6 +4,7 @@
   "exports": "./mod.ts",  
   "license": "Mozilla Public License Version 2.0",  
   "tasks": {
-    "sample" : "deno run --allow-net --allow-read --watch ./sample.ts"
+    "sample" : "deno run --allow-net --allow-read --watch ./sample.ts",
+    "test:get-directory-listing" : "deno run -A --watch ./mod/ftp/get-directory-listing.test.ts"
   }
 }

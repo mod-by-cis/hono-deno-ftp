@@ -42,13 +42,7 @@ async function getDirectoryListing(
     includeDirs: true,
     includeFiles: true,
   })) {    
-    const isFolder = entry.isDirectory && !entry.isSymlink;
-    const isFile = entry.isFile && !entry.isSymlink && !(!entry.isDirectory && entry.name.endsWith('.url'));
-    const isUrl = entry.isFile && !entry.isSymlink && (!entry.isDirectory && entry.name.endsWith('.url'));
-    const isLinkFolder = entry.isDirectory && entry.isSymlink;
-    const isLinkFile = entry.isFile && entry.isSymlink && !(!entry.isDirectory && entry.name.endsWith('.url'));
-    const isLinkUrl = entry.isFile && entry.isSymlink && (!entry.isDirectory && entry.name.endsWith('.url'));
-    const f = isFolder ? '📁' : isFile ? '📄' : isUrl ? '🌐' : isLinkFolder ? '🔗📁' : isLinkFile ? '🔗📄' : isLinkUrl ? '🔗🌐' : '⁉️';
+    const f = await detectEntryType(entry);
     const rel = entry.path.replace(path.LOCAL, "").replace(/\\/g, "/");
     if (rel === "") continue;
     entries.push({
@@ -59,6 +53,60 @@ async function getDirectoryListing(
     i++;
   }
   return entries;
+}
+
+/**
+ * 🇺🇸 Determines the visual type of a filesystem entry (folder, file, link, etc.).
+ *    Returns a specific emoji depending on the type and details of the entry.
+ * 
+ * 🇵🇱 Określa wizualny typ wpisu w systemie plików (folder, plik, link itp.).
+ *    Zwraca odpowiednią emotkę w zależności od typu i szczegółów wpisu.
+ * 
+ * - 📁     🇺🇸  Regular directory                    🇵🇱  Normalny katalog
+ * - 📄     🇺🇸  Regular file                         🇵🇱  Normalny plik
+ * - 🌐      🇺🇸  Special file (ending with ".url")    🇵🇱  Specjalny plik (kończący się na ".url")
+ * - 🔗📁  🇺🇸  Symbolic link to a directory         🇵🇱  Dowiązanie symboliczne do katalogu
+ * - 🔗📄  🇺🇸  Symbolic link to a file              🇵🇱  Dowiązanie symboliczne do pliku
+ * - 🔗🌐   🇺🇸  Symbolic link to a ".url" file       🇵🇱  Dowiązanie symboliczne do pliku ".url"
+ * - 🔗⁉️  🇺🇸  Broken or unreadable symbolic link   🇵🇱  Uszkodzone lub nieczytelne dowiązanie symboliczne
+ * - ⁉️    🇺🇸  Unknown or unclassified entry        🇵🇱  Nieznany lub nieokreślony wpis
+ *
+ * @param r - Entry metadata including flags for file, directory, symlink, name, and path
+ * @returns A string containing the corresponding emoji
+ */
+async function detectEntryType(r: { 
+  isDirectory: boolean;
+  isFile: boolean;
+  isSymlink: boolean;
+  name: string;
+  path: string;
+}): Promise<string> {
+  if (r.isDirectory && !r.isSymlink) {
+    return "📁";
+  }
+  if (r.isFile && !r.isSymlink && r.name.endsWith(".url")) {
+    return "🌐";
+  }
+  if (r.isFile && !r.isSymlink) {
+    return "📄";
+  }
+  if (r.isSymlink) {
+    try {
+      const targetInfo = await Deno.stat(r.path);
+      if (targetInfo.isDirectory) {
+        return "🔗📁";
+      }
+      if (targetInfo.isFile && r.name.endsWith(".url")) {
+        return "🔗🌐";
+      }
+      if (targetInfo.isFile) {
+        return "🔗📄";
+      }
+    } catch {
+      return "🔗⁉️"; // e.g., broken symlink
+    }
+  }
+  return "⁉️";
 }
 
 

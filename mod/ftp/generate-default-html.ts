@@ -6,10 +6,10 @@
  * @module ./mod/ftp/generate-default-html.ts
  * 
  * @source
- * [GitHub](https://github.com/mod-by-cis/hono-deno-ftp/blob/v0.2.2/mod/ftp/generate-default-html.ts)
+ * [GitHub](https://github.com/mod-by-cis/hono-deno-ftp/blob/v0.2.5/mod/ftp/generate-default-html.ts)
  * 
  * @jsr
- * [JSR](https://jsr.io/@cis/hono-ftp/0.2.2/mod/ftp/generate-default-html.ts)
+ * [JSR](https://jsr.io/@cis/hono-ftp/0.2.5/mod/ftp/generate-default-html.ts)
  */
 
 

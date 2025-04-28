@@ -6,10 +6,10 @@
  * @module ./mod/ftp/checks-folder-or-file.ts
  * 
  * @source
- * [GitHub](https://github.com/mod-by-cis/hono-deno-ftp/blob/v0.2.2/mod/ftp/checks-folder-or-file.ts)
+ * [GitHub](https://github.com/mod-by-cis/hono-deno-ftp/blob/v0.2.5/mod/ftp/checks-folder-or-file.ts)
  * 
  * @jsr
- * [JSR](https://jsr.io/@cis/hono-ftp/0.2.2/mod/ftp/checks-folder-or-file.ts)
+ * [JSR](https://jsr.io/@cis/hono-ftp/0.2.5/mod/ftp/checks-folder-or-file.ts)
  */
 
 

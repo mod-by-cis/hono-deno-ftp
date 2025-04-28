@@ -6,10 +6,10 @@
  * @module ./mod/ftp.d.ts
  * 
  * @source
- * [GitHub](https://github.com/mod-by-cis/hono-deno-ftp/blob/v0.2.2/mod/ftp.d.ts)
+ * [GitHub](https://github.com/mod-by-cis/hono-deno-ftp/blob/v0.2.5/mod/ftp.d.ts)
  * 
  * @jsr
- * [JSR](https://jsr.io/@cis/hono-ftp/0.2.2/mod/ftp.d.ts)
+ * [JSR](https://jsr.io/@cis/hono-ftp/0.2.5/mod/ftp.d.ts)
  */
 
 

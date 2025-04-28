@@ -5,9 +5,9 @@
 - Imports required for proper operation
 
 ```ts
-    import { Hono } from "jsr:@hono/hono@4.7.7";
-    import { serveStatic } from "jsr:@hono/hono@4.7.7/deno";
-    import type { MiddlewareHandler } from "jsr:@hono/hono@4.7.7";
+    import { Hono } from "jsr:@hono/hono@4.7.8";
+    import { serveStatic } from "jsr:@hono/hono@4.7.8/deno";
+    import type { MiddlewareHandler } from "jsr:@hono/hono@4.7.8";
     import { walk } from "jsr:@std/fs@1.0.17/walk";
 ```
 
@@ -15,13 +15,13 @@
   - Directly from **<u>jsr</u>** repository
 
 ```ts
-      import { type HonoFtpOptions, honoDenoFtp } from "jsr:@cis/hono-ftp@0.2.2";
+      import { type HonoFtpOptions, honoDenoFtp } from "jsr:@cis/hono-ftp@0.2.5";
 ```
 
 - Directly from **<u>github</u>** repository
 
 ```ts
-      import { type HonoFtpOptions, honoDenoFtp } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.2/mod.ts";
+      import { type HonoFtpOptions, honoDenoFtp } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.5/mod.ts";
 ```
 
 - indirectly from **<u>deno.json</u>** 

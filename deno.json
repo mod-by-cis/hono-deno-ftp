@@ -1,6 +1,6 @@
 {
   "name": "@cis/hono-ftp",
-  "version": "0.2.2",
+  "version": "0.2.5",
   "exports": "./mod.ts",  
   "license": "Mozilla Public License Version 2.0",  
   "tasks": {

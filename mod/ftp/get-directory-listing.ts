@@ -41,8 +41,14 @@ async function getDirectoryListing(
     maxDepth: 1,
     includeDirs: true,
     includeFiles: true,
-  })) {
-    const f = entry.isDirectory ? '📁' : '📄';    
+  })) {    
+    const isFolder = entry.isDirectory && !entry.isSymlink;
+    const isFile = entry.isFile && !entry.isSymlink && !(!entry.isDirectory && entry.name.endsWith('.url'));
+    const isUrl = entry.isFile && !entry.isSymlink && (!entry.isDirectory && entry.name.endsWith('.url'));
+    const isLinkFolder = entry.isDirectory && entry.isSymlink;
+    const isLinkFile = entry.isFile && entry.isSymlink && !(!entry.isDirectory && entry.name.endsWith('.url'));
+    const isLinkUrl = entry.isFile && entry.isSymlink && (!entry.isDirectory && entry.name.endsWith('.url'));
+    const f = isFolder ? '📁' : isFile ? '📄' : isUrl ? '🌐' : isLinkFolder ? '🔗📁' : isLinkFile ? '🔗📄' : isLinkUrl ? '🔗🌐' : '⁉️';
     const rel = entry.path.replace(path.LOCAL, "").replace(/\\/g, "/");
     if (rel === "") continue;
     entries.push({

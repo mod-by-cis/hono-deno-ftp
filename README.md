@@ -2,53 +2,53 @@
 
 ## 📦 HOW USED - INSTALL
 
-- Imports required for proper operation
+- 1️⃣ Imports required for proper operation
 
-```ts
+    ```ts
     import { Hono } from "jsr:@hono/hono@4.7.8";
     import { serveStatic } from "jsr:@hono/hono@4.7.8/deno";
     import type { MiddlewareHandler } from "jsr:@hono/hono@4.7.8";
     import { walk } from "jsr:@std/fs@1.0.17/walk";
-```
+    ```
 
-- And import this module
-  - Directly from **<u>jsr</u>** repository
+- 2️⃣ And import this module
+    - 2️⃣✳️1️⃣ Directly from **<u>jsr</u>** repository
+    
+        ```ts
+        import { type HonoFtpOptions, honoDenoFtp } from "jsr:@cis/hono-ftp@0.2.5";
+        ```
+    
+    - 2️⃣✳️2️⃣ Directly from **<u>github</u>** repository
+    
+        ```ts
+        import { type HonoFtpOptions, honoDenoFtp } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.5/mod.ts";
+        ```
+    
+    - 2️⃣✳️3️⃣ indirectly from **<u>deno.json</u>** 
+    
+        Add Package
+    
+         ```cmd
+         deno add jsr:@cis/hono-ftp
+         ```
 
-```ts
-      import { type HonoFtpOptions, honoDenoFtp } from "jsr:@cis/hono-ftp@0.2.5";
-```
+        Import symbol
 
-- Directly from **<u>github</u>** repository
+         ```ts
+         import { type HonoFtpOptions, honoDenoFtp } from "@cis/hono-ftp";
+         ```
 
-```ts
-      import { type HonoFtpOptions, honoDenoFtp } from "https://raw.githubusercontent.com/mod-by-cis/hono-deno-ftp/refs/tags/v0.2.5/mod.ts";
-```
+    - 2️⃣✳️4️⃣ indirectly from re-exports eg. **<u>deps.ts</u>**
 
-- indirectly from **<u>deno.json</u>** 
-
-      Add Package
-
-```cmd
-      deno add jsr:@cis/hono-ftp
-```
-
-Import symbol
-
-```ts
-      import { type HonoFtpOptions, honoDenoFtp } from "@cis/hono-ftp";
-```
-
-- indirectly from re-exports eg. **<u>deps.ts</u>**
-
-```ts
-      import { type HonoFtpOptions, honoDenoFtp } from "../deps.ts";
-```
+        ```ts
+        import { type HonoFtpOptions, honoDenoFtp } from "../deps.ts";
+        ```
 
 ## 🧠 HOW USED
 
 - 🅰️ minimal configuration
 
-```ts
+    ```ts
     const appMain = new Hono();
 
     appMain.use(
@@ -73,11 +73,11 @@ Import symbol
     });
 
     Deno.serve(/*{port:8007},*/ appMain.fetch);
-```
+    ```
 
 - 🅱️ optionally you can overwrite the layout of our FTP
 
-```ts
+    ```ts
     const appMain = new Hono();
 
     appMain.use(
@@ -133,7 +133,7 @@ Import symbol
     });
 
     Deno.serve(/*{port:8007},*/ appMain.fetch);
-```
+    ```
 
 ---
 
